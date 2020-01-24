@@ -60,19 +60,6 @@
         app:layout_constraintStart_toEndOf="@+id/keyTV"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
-    <TextView
-        android:id="@+id/choiceTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="157dp"
-        android:layout_marginBottom="44dp"
-        android:text="Wybierz test"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/key2TV"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/keyTV" />
-
     <Button
         android:id="@+id/saveBT"
         android:layout_width="wrap_content"
@@ -86,38 +73,60 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/keyText" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="230dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/choiceTV"
-        app:layout_constraintTop_toBottomOf="@+id/saveBT" />
+    <TextView
+        android:id="@+id/choiceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="186dp"
+        android:text="Wybierz test"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keyTV" />
 
     <TextView
         android:id="@+id/key2TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="72dp"
         android:text="Odp:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choiceTV" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/examKeyTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="44dp"
-        android:text="Klucz do tesu"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="72dp"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/key2TV"
         app:layout_constraintTop_toBottomOf="@+id/choiceTV" />
+
+    <Spinner
+        android:id="@+id/examsSpinner"
+        android:layout_width="230dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.419"
+        app:layout_constraintStart_toEndOf="@+id/choiceTV"
+        app:layout_constraintTop_toBottomOf="@+id/getBT" />
+
+    <Button
+        android:id="@+id/getBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="162dp"
+        android:text="Odśwież"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveBT" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
