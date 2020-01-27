@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "exam.db";
@@ -15,6 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_1 = "ID";
     public static final String COL_2 = "NAME";
     public static final String COL_3 = "ANSWER_KEY";
+    public static final String COL_4 = "DATE_CREATED";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -22,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, ANSWER_KEY TEXT NOT NULL)");
+        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, ANSWER_KEY TEXT NOT NULL, DATE_CREATED DATETIME NOT NULL)");
     }
 
     @Override
@@ -34,9 +38,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean insertData(String name, String key){
         SQLiteDatabase db = this.getWritableDatabase();
 
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String createdDate = sdf.format(cal.getTime());
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, name);
         contentValues.put(COL_3, key);
+        contentValues.put(COL_4, createdDate);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -46,17 +55,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public Cursor getExams(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result = db.rawQuery("select "+ COL_2 +"  from "+ TABLE_NAME, null);
+//    public Cursor getData(){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor result = db.rawQuery("select * from "+ TABLE_NAME, null);
+//
+//        return result;
+//    }
 
-        return result;
-    }
 
-    public Cursor getKey(String examName){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result = db.rawQuery("select "+ COL_3 +" from "+ TABLE_NAME +" where "+ COL_2 +" = "+"'"+ examName +"'", null);
-
-        return result;
-    }
 }
