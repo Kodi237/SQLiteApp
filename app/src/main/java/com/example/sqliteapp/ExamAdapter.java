@@ -40,7 +40,7 @@ public class ExamAdapter extends ArrayAdapter<Exam> {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(listLayoutRes, null);
 
-        //getting employee of the specified position
+        //getting exams of the specified position
         final Exam exam = examList.get(position);
 
 
